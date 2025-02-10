@@ -33,8 +33,8 @@ The objective of this project is to develop an automated lease support system th
                 │ - Flask API (Backend)    │
                 └──────────────────────────┘
                                       │
-           ┌    ───────────────────────────┐
-           │           Frontend (Optional)  │
-           ├    ───────────────────────────┤
-           │     - ReactJS (User Interface)│  ⬅ (If UI is needed)
-           └    ───────────────────────────┘
+                ┌───────────────────────────┐
+                │      Frontend (Optional)  │
+                ├───────────────────────────┤
+                │ - ReactJS (User Interface)│  ⬅ (If UI is needed)
+                └───────────────────────────┘
