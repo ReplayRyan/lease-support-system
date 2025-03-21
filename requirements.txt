@@ -18,7 +18,7 @@ markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 mdurl==0.1.2
 murmurhash==1.0.12
-numpy==2.2.3
+numpy==2.0.2
 packaging==24.2
 pdf2image==1.17.0
 pillow==11.1.0
@@ -33,7 +33,7 @@ rich==13.9.4
 setuptools==76.0.0
 shellingham==1.5.4
 smart-open==7.1.0
-spacy==3.8.4
+spacy==3.7.2
 spacy-legacy==3.0.12
 spacy-loggers==1.0.5
 srsly==2.5.1

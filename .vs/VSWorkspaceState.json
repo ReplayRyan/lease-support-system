@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github",
+    "\\.github\\workflows",
+    "\\data",
+    "\\data\\data",
+    "\\env",
+    "\\processing",
+    "\\scripts",
+    "\\src",
+    "\\src\\extraction"
+  ],
+  "SelectedNode": "\\processing\\calculations.py",
+  "PreviewInSolutionExplorer": false
+}
