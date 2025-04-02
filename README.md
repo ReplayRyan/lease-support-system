@@ -29,12 +29,11 @@ The objective of this project is to develop an automated lease support system th
                 ┌──────────────────────────┐
                 │    Data Storage & API    │
                 ├──────────────────────────┤
-                │ - PostgreSQL (Structured)│
-                │ - Flask API (Backend)    │
+                │           TBD            │
                 └──────────────────────────┘
                                       │
                 ┌───────────────────────────┐
                 │      Frontend (Optional)  │
                 ├───────────────────────────┤
-                │ - ReactJS (User Interface)│  ⬅ (If UI is needed)
+                │ - CustomTinker            | 
                 └───────────────────────────┘
