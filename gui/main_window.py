@@ -75,34 +75,41 @@ def restore_pdf_values():
     else:
         print("No original NER values to restore.")
 
+# ========== Initial Values ==========
+
 def calculate_information():
     pmt = float(rent_entry.get())
     rate = float(interest_rate_entry.get()) / 12
     nper = int(lease_term_entry.get())
     initial_cost = 5000  # Placeholder
 
-    lease_metrics = calculations.calculate_lease_metrics(pmt, rate, nper, initial_cost)
+    lease_metrics = calculations.calculate_lease_metrics(pmt, rate, nper, initial_cost) # To be replaced with individual calculations functions.
+    # This is simply for the test output.
 
-    present_value_entry.delete(0, "end")
-    present_value_entry.insert(0, f"{lease_metrics['Present Value (PV)']:.2f}")
+    # ========== CALCULATIONS ==========
 
-    monthly_payment_entry.delete(0, "end")
-    monthly_payment_entry.insert(0, f"{lease_metrics['Monthly Payment (PMT)']:.2f}")
+    present_value_entry.delete(0, "end")                                                    # type: ignore                                  
+    present_value_entry.insert(0, f"{lease_metrics['Present Value (PV)']:.2f}")             # type: ignore
 
-    lease_liability_entry.delete(0, "end")
-    lease_liability_entry.insert(0, f"{lease_metrics['Lease Liability']:.2f}")
+    monthly_payment_entry.delete(0, "end")                                                  # type: ignore                                      
+    monthly_payment_entry.insert(0, f"{lease_metrics['Monthly Payment (PMT)']:.2f}")        # type: ignore
 
-    interest_expense_entry.delete(0, "end")
-    interest_expense_entry.insert(0, f"{lease_metrics['Interest Expense']:.2f}")
+    lease_liability_entry.delete(0, "end")                                                  # type: ignore
+    lease_liability_entry.insert(0, f"{lease_metrics['Lease Liability']:.2f}")              # type: ignore
 
-    principal_payment_entry.delete(0, "end")
-    principal_payment_entry.insert(0, f"{lease_metrics['Principal Payment']:.2f}")
+    interest_expense_entry.delete(0, "end")                                                 # type: ignore
+    interest_expense_entry.insert(0, f"{lease_metrics['Interest Expense']:.2f}")            # type: ignore
 
-    future_value_entry.delete(0, "end")
-    future_value_entry.insert(0, f"{lease_metrics['Future Value (FV)']:.2f}")
+    principal_payment_entry.delete(0, "end")                                                # type: ignore
+    principal_payment_entry.insert(0, f"{lease_metrics['Principal Payment']:.2f}")          # type: ignore
 
-    net_present_value_entry.delete(0, "end")
-    net_present_value_entry.insert(0, f"{lease_metrics['Net Present Value (NPV)']:.2f}")
+    future_value_entry.delete(0, "end")                                                     # type: ignore                                   
+    future_value_entry.insert(0, f"{lease_metrics['Future Value (FV)']:.2f}")               # type: ignore
+
+    net_present_value_entry.delete(0, "end")                                                # type: ignore     
+    net_present_value_entry.insert(0, f"{lease_metrics['Net Present Value (NPV)']:.2f}")    # type: ignore
+
+# ========== SETTINGS BUTTON ==========
 
 def open_settings():
     settings_app = CTk()
@@ -200,15 +207,18 @@ calculated_info_frame.pack(pady=10, padx=20, fill="x")
 calculated_info_label = CTkLabel(calculated_info_frame, text="CALCULATED INFORMATION (Editable)", font=("Helvetica", 16, "bold"))
 calculated_info_label.grid(row=0, column=0, columnspan=2, pady=10)
 
+# ========== TEST OUTPUT (TERMINAL) ==========
 labels = [
-    ("Present Value (PV):", lambda: present_value_entry),
-    ("Monthly Payment (PMT):", lambda: monthly_payment_entry),
-    ("Lease Liability:", lambda: lease_liability_entry),
-    ("Interest Expense:", lambda: interest_expense_entry),
-    ("Principal Payment:", lambda: principal_payment_entry),
-    ("Future Value (FV):", lambda: future_value_entry),
-    ("Net Present Value (NPV):", lambda: net_present_value_entry)
+    ("Present Value (PV):", lambda: present_value_entry),           # type: ignore
+    ("Monthly Payment (PMT):", lambda: monthly_payment_entry),      # type: ignore
+    ("Lease Liability:", lambda: lease_liability_entry),            # type: ignore
+    ("Interest Expense:", lambda: interest_expense_entry),          # type: ignore
+    ("Principal Payment:", lambda: principal_payment_entry),        # type: ignore
+    ("Future Value (FV):", lambda: future_value_entry),             # type: ignore
+    ("Net Present Value (NPV):", lambda: net_present_value_entry)   # type: ignore
 ]
+
+# ========== CALCULATION BOXES ==========
 
 for i, (text, entry_fn) in enumerate(labels, start=1):
     lbl = CTkLabel(calculated_info_frame, text=text)
