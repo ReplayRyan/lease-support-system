@@ -1,4 +1,6 @@
+import sys
 import spacy
+import fitz # PyMuPDF
 
 
 
@@ -36,8 +38,27 @@ def extract_entities(text, confidence_threshold=0.8):
         "security_deposit": float(entities.get("SECURITY_DEPOSIT", "0").replace("$", "").replace(",", "")) if "INITIAL_COST" in entities else None
     }
 
+def extract_text_from_pdf(pdf_path):
+    doc = fitz.open(pdf_path)
+    text = ""
+    for page in doc:
+        text += page.get_text()
+    doc.close()
+    return text
+
 if __name__ == "__main__":
-    test_text = "The lease starts on January 1, 2025, and ends on December 31, 2030. The monthly rent is $2500. The security deposit is $5000."
-    extracted_info = extract_entities(test_text)
-    print("\nExtracted Lease Data:")
-    print(extracted_info)
+
+    if len(sys.argv) <2:
+        print("Usage: python test_ner.py <path_to_path>")
+        sys.exit(1)
+
+    pdf_path = sys.argv[1]
+    pdf_text = extract_text_from_pdf(pdf_path)
+    extracted_info = extract_entities(pdf_text)
+
+    for entity_text, label in extracted_info:
+        print(f"{entity_text} ({label})")
+
+    # test_text = "The lease starts on January 1, 2025, and ends on December 31, 2030. The monthly rent is $2,500."
+    # extracted_info = extract_entities(test_text)
+    # print(extracted_info)
