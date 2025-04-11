@@ -19,8 +19,13 @@
   "labels":{
     "ner":[
       "ESCALATION_RATE",
-      "GPE",
-      "RENT_AMOUNT"
+      "LEASE_END_DATE",
+      "LEASE_START_DATE",
+      "MONTHLY_RENT",
+      "PROPERTY_ADDRESS",
+      "RENT_AMOUNT",
+      "SECURITY_DEPOSIT",
+      "TERMINATION_FEE"
     ]
   },
   "pipeline":[
